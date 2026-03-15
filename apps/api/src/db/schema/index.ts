@@ -4,24 +4,27 @@ import type { z } from "zod";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
-export * from "./auth";
-
-export const tasks = sqliteTable("tasks", {
-  id: integer({ mode: "number" })
-    .primaryKey({ autoIncrement: true }),
-  name: text()
-    .notNull(),
-  done: integer({ mode: "boolean" })
-    .notNull()
-    .default(false),
-  createdAt: integer()
-    .notNull()
-    .$defaultFn(() => Date.now()),
-  updatedAt: integer()
-    .notNull()
-    .$defaultFn(() => Date.now())
-    .$onUpdate(() => Date.now()),
-});
+export const tasks = sqliteTable(
+  "tasks",
+  {
+    id: integer({ mode: "number" })
+      .primaryKey({ autoIncrement: true }),
+    organizationId: text("organizationId"),
+    name: text()
+      .notNull(),
+    done: integer({ mode: "boolean" })
+      .notNull()
+      .default(false),
+    createdAt: integer()
+      .notNull()
+      .$defaultFn(() => Date.now()),
+    updatedAt: integer()
+      .notNull()
+      .$defaultFn(() => Date.now())
+      .$onUpdate(() => Date.now()),
+  },
+  _table => [],
+);
 
 export const selectTasksSchema = createSelectSchema(tasks);
 export type selectTasksSchema = z.infer<typeof selectTasksSchema>;
@@ -35,6 +38,7 @@ export const insertTasksSchema = createInsertSchema(
   done: true,
 }).omit({
   id: true,
+  organizationId: true,
   createdAt: true,
   updatedAt: true,
 });

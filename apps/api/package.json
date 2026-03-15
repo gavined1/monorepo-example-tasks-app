@@ -15,19 +15,18 @@
     "lint:fix": "npm run lint --fix",
     "test": "cross-env NODE_ENV=test vitest",
     "db:generate": "drizzle-kit generate",
-    "db:migrate:local": "wrangler d1 migrations apply tasks-app --local",
-    "db:migrate:remote": "wrangler d1 migrations apply tasks-app --remote"
+    "db:migrate:local": "wrangler d1 migrations apply soklim-app --local",
+    "db:migrate:remote": "wrangler d1 migrations apply soklim-app --remote"
   },
   "dependencies": {
-    "@auth/core": "^0.37.4",
-    "@auth/drizzle-adapter": "^1.7.4",
-    "@hono/auth-js": "^1.0.15",
     "@hono/node-server": "^1.13.7",
     "@hono/zod-openapi": "^0.18.3",
     "@libsql/client": "^0.14.0",
     "@logtape/logtape": "^0.8.0",
     "@scalar/hono-api-reference": "^0.5.164",
     "@tasks-app/eslint-config": "workspace:^",
+    "@upstash/redis": "^1.37.0",
+    "better-auth": "^1.5.5",
     "drizzle-orm": "^0.38.2",
     "drizzle-zod": "^0.6.0",
     "hono": "^4.6.13",
@@ -38,7 +37,7 @@
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.5.36",
-    "@cloudflare/workers-types": "^4.20241205.0",
+    "@cloudflare/workers-types": "^4.20260313.1",
     "@types/node": "^22.10.2",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.30.1",
@@ -50,6 +49,6 @@
     "turso": "^0.1.0",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8",
-    "wrangler": "^3.95.0"
+    "wrangler": "^4.73.0"
   }
 }

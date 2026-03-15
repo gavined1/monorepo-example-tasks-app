@@ -9,13 +9,19 @@ binding = "ASSETS"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "tasks-app"
-database_id = "000-000-000-000"
+database_name = "soklim-app"
+database_id = "d7b87d65-a1ef-42db-b2a0-7bad246e8c39"
 migrations_dir = "src/db/migrations"
 
 [vars]
 LOG_LEVEL = "debug"
-GITHUB_CLIENT_ID = "your-client-id-here"
-GITHUB_CLIENT_SECRET = "your-client-secret-here"
-AUTH_SECRET = "abc123"
+GITHUB_CLIENT_ID = "Ov23liByCLENg25Mr5FR"
+GITHUB_CLIENT_SECRET = "143e5ca9903085271ae1bf8d3740eccd56c70410"
+# Use a 32+ char secret (dev only). Production: `wrangler secret put AUTH_SECRET` and use `npx auth secret` or `openssl rand -base64 32`
+AUTH_SECRET = "xPL+NvvXoziIq26WyztiFTAHUfWD4cPdEqnWDvJaNA0="
 AUTH_URL = "http://localhost:5173/api/auth"
+
+# Optional: Upstash Redis for sessions + rate limits. Get from https://console.upstash.com/
+# Production: use `wrangler secret put UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`
+UPSTASH_REDIS_REST_URL = "https://faithful-rattler-72381.upstash.io"
+UPSTASH_REDIS_REST_TOKEN = "gQAAAAAAARq9AAIncDE3ZmJiNmRmOTY4Zjk0ODlkOTA0NjMyMjdlOGQ3ZTUwY3AxNzIzODE"

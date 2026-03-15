@@ -8,5 +8,8 @@
     "test": "pnpm run -r --parallel test",
     "lint": "pnpm run -r --parallel lint",
     "deploy": "pnpm build && pnpm run -r deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.73.0"
   }
 }
